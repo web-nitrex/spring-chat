@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Chat</title>
 </head>
 <body>
-    <h2>Hello World!</h2>
+
+<h2>Chat</h2>
+
+<div th:each="msg : ${chatMessages}">
+    <br><b th:text="${msg.getFrom()}"></b></br>
+    <br th:text="${msg.getDate()}"></br>
+    <br th:text="${msg.getMessage()}"></br>
+</div>
+
+<form action="add-message" method="post">
+    <p>Message [<b th:text="${login}"]></b>]:<br>
+        <textarea name="message" cols="40" rows="3"></textarea></p>
+    <p><input type="submit" value="Send">
+        <input type="reset" value="Clear"></p>
+</form>
+
+<form action="logout" method="POST">
+    <p><input type="submit" value="Exit" />
+</form>
+
 </body>
 </html>
